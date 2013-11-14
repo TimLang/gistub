@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= content_for?(:title) ? yield(:title) : "Gistub" %></title>
+  <title><%= content_for?(:title) ? yield(:title) : "知识分享" %></title>
   <%= csrf_meta_tags %>
 
   <!--[if lt IE 9]>
@@ -23,18 +23,18 @@
       <div class="pull-right">
         <% if current_user.present? %>
             <%= link_to current_user.nickname, user_path(current_user), :class => 'btn btn-small' %>
-            <%= link_to 'Sign out', signout_path, :class => 'btn btn-small' %>
+            <%= link_to '注销', signout_path, :class => 'btn btn-small' %>
         <% else %>
-            <%= link_to 'Sign in', signin_path, :class => 'btn btn-small' %>
+            <%= link_to '登录', signin_path, :class => 'btn btn-small' %>
         <% end %>
       </div>
-      <%= link_to 'Gistub', root_path, :class => 'brand' %>
+      <%= link_to '知识分享', root_path, :class => 'brand' %>
 
       <div class="container nav-collapse">
         <ul class="nav">
-          <li><%= link_to "New Gist", new_gist_path %></li>
-          <li><%= link_to "Public Gists", gists_path %></li>
-          <li><%= link_to "My Gists", mine_gists_path %></li>
+          <li><%= link_to "新的分享", new_gist_path %></li>
+          <li><%= link_to "公共的分享", gists_path %></li>
+          <li><%= link_to "我的分享", mine_gists_path %></li>
         </ul>
       </div>
     </div>

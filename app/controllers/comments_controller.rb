@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     comment.user_id = current_user.try(:id)
     comment.body = params[:body]
     if comment.save
-      redirect_to gist_path(@gist.id), notice: 'Comment is successfully added.'
+      redirect_to gist_path(@gist.id), notice: '评论创建成功.'
     else
       render action: '../gists/show'
     end
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = Comment.where(id: params[:id], user_id: current_user.try(:id)).first
-    destroy_and_redirect_to_gist(comment, 'Comment is successfully removed.', 'Not found.')
+    destroy_and_redirect_to_gist(comment, '评论删除成功.', '没有找到.')
   end
 
 end

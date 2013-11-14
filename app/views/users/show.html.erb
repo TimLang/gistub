@@ -15,19 +15,18 @@
   </table>
 
   <% if @user.id == current_user.try(:id) %>
-      <i class="icon-pencil"></i>&nbsp;<%= link_to 'Edit', edit_user_path(@user) %>
+      <i class="icon-pencil"></i>&nbsp;<%= link_to '编辑', edit_user_path(@user) %>
       &nbsp;&nbsp;
-      <i class="icon-trash"></i>&nbsp;<%= link_to 'Delete', user_path(@user), :method => :delete, :data => {:confirm => 'Are you sure?'} %>
+      <i class="icon-trash"></i>&nbsp;<%= link_to '删除', user_path(@user), :method => :delete, :data => {:confirm => '确定要删除吗?'} %>
   <% end %>
 
   <hr/>
-  <h3>Public Gists</h3>
-  <hr/>
+  <h3>公共的分享</h3>
 
   <%= render :partial => 'gists/user_page' %>
 
   <hr/>
-  <h3>Favorite Gists</h3>
+  <h3>喜欢的分享</h3>
   <hr/>
 
   <%= render :partial => 'gists/user_fav_page' %>

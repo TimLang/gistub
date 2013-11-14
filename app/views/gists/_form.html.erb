@@ -10,7 +10,7 @@
     <%= render :partial => 'common/flash_error' %>
 
     <div class="form-inputs">
-      <%= f.input :title, :label => false, :placeholder => 'Gist description...', :input_html => {:class => 'span8'} %>
+      <%= f.input :title, :label => false, :placeholder => '分享描述...', :input_html => {:class => 'span8'} %>
     </div>
 
     <div id="gist_files_input">
@@ -24,7 +24,7 @@
     </div>
 
     <div id="add-file" class="well well-small">
-      <a href="#">Add another file&hellip;</a>
+      <a href="#">添加其他文件&hellip;</a>
     </div>
 
     <div class="form-inputs">
@@ -33,11 +33,11 @@
       <% else %>
           <%= check_box_tag 'is_public', true, @gist.user_id.nil? ? true : @gist.is_public, :disabled => true %>
       <% end %>
-      &nbsp;&nbsp;Create as a public Gist
+      &nbsp;&nbsp;创建新的公共分享
     </div>
 
     <div class="form-actions">
-      <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+      <%= f.submit '提交', :class => 'btn btn-primary' %>
     </div>
   <% end %>
 
@@ -90,6 +90,6 @@
 
 <% else %>
 
-Please <%= link_to 'sign in', signin_path %> to create a gist.
+请 <%= link_to '登录', signin_path %> to create a gist.
 
 <% end %>

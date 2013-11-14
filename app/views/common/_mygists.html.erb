@@ -1,6 +1,6 @@
 <% if current_user.present? %>
 
-    <h4>My Gists</h4>
+    <h4>我的分享</h4>
 
     <% my_gists.each do |gist| %>
         <div class="muted">
@@ -17,7 +17,7 @@
         </div>
     <% end %>
     <small>
-      <%= link_to "More...", user_path(current_user) %>
+      <%= link_to "更多...", user_path(current_user) %>
     </small>
     <hr/>
 

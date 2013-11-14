@@ -13,14 +13,14 @@ class GistsController < ApplicationController
 
   def index
     @gists = Gist.recent.page(1).per(10)
-    @gist_list_title = 'Public Gists'
+    @gist_list_title = '公共的分享'
   end
 
   def search
     if params[:search_query].present?
       @search_query = params[:search_query]
       @gists = Gist.search(@search_query, current_user.try(:id), 1)
-      @gist_list_title = 'Search Result'
+      @gist_list_title = '搜索结果'
     else
       @gists = Gist.recent.page(1).per(10)
     end
@@ -108,10 +108,10 @@ class GistsController < ApplicationController
 
     begin
       created_gist = GistForkCreation.new.save!(gist_to_fork, current_user)
-      redirect_to created_gist, notice: 'Successfully forked.'
+      redirect_to created_gist, notice: '克隆成功.'
     rescue Exception => e
       debug_log_back_trace(e)
-      redirect_to gist_to_fork, notice: 'Failed to fork.'
+      redirect_to gist_to_fork, notice: '克隆失败.'
     end
   end
 
@@ -120,10 +120,10 @@ class GistsController < ApplicationController
     return render_404 unless gist
 
     if gist.user_id.present? && gist.user_id != current_user.try(:id)
-      redirect_to root_path, notice: 'Not found.'
+      redirect_to root_path, notice: '没有找到.'
     else
       gist.destroy
-      redirect_to root_path, notice: 'Successfully deleted.'
+      redirect_to root_path, notice: '删除成功.'
     end
   end
 
@@ -133,7 +133,7 @@ class GistsController < ApplicationController
 
   def mine
     @gists = Gist.find_my_recent_gists(current_user.id).page(1).per(10)
-    @gist_list_title = 'My Gists'
+    @gist_list_title = '我的分享'
   end
 
   # ajax paginator
@@ -178,7 +178,7 @@ class GistsController < ApplicationController
     begin
       gist_files = params[:gist_file_names].zip(params[:gist_file_bodies])
       gist_saver.save!(@gist, gist_files, current_user)
-      redirect_to @gist, notice: 'Successfully created.'
+      redirect_to @gist, notice: '创建成功.'
     rescue Exception => e
       debug_log_back_trace(e)
       render action: failure_view_name

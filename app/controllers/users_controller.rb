@@ -30,7 +30,7 @@ class UsersController < ApplicationController
         return render action: 'edit'
       end
       if @user.update_attributes(params[:user])
-        redirect_to @user, notice: 'User was successfully updated.'
+        redirect_to @user, notice: '用户资料更新成功.'
       else
         render action: 'edit'
       end

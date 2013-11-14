@@ -27,17 +27,17 @@
         &nbsp;&nbsp;
     <% end %>
     <% if @gist.user_id != current_user.try(:id) %>
-        <i class="icon-download"></i>&nbsp;<%= link_to 'Fork', gist_fork_path(@gist), :method => :post %>
+        <i class="icon-download"></i>&nbsp;<%= link_to '克隆', gist_fork_path(@gist), :method => :post %>
         &nbsp;&nbsp;
     <% end %>
     <% if (@gist.user_id.nil? && is_anonymous_gist_allowed) || (@gist.user_id.present? && @gist.user_id == current_user.try(:id)) %>
-        <i class="icon-edit"></i>&nbsp;<%= link_to 'Edit', edit_gist_path(@gist) %>
+        <i class="icon-edit"></i>&nbsp;<%= link_to '编辑', edit_gist_path(@gist) %>
         &nbsp;&nbsp;
     <% end %>
     <% if current_user.present? and @gist.user_id == current_user.try(:id) %>
-        <i class="icon-trash"></i>&nbsp;<%= link_to 'Delete', gist_path(@gist), :method => :delete, :data => {:confirm => 'Are you sure?'} %>
+        <i class="icon-trash"></i>&nbsp;<%= link_to '删除', gist_path(@gist), :method => :delete, :data => {:confirm => '您确定?'} %>
     <% elsif (@gist.user_id.nil? && is_anonymous_gist_allowed) %>
-        <i class="icon-trash"></i>&nbsp;<%= link_to 'Delete', gist_path(@gist), :method => :delete, :data => {:confirm => 'Are you sure?'} %>
+        <i class="icon-trash"></i>&nbsp;<%= link_to '删除', gist_path(@gist), :method => :delete, :data => {:confirm => '您确定?'} %>
     <% end %>
     <br/>
   </div>
@@ -62,7 +62,7 @@
   <% end %>
 
   <hr/>
-  <h4>Comments</h4>
+  <h4>评论</h4>
   <hr/>
   <%= render :partial => 'comments/list' %>
   <%= render :partial => 'comments/form' %>
